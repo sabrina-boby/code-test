@@ -16,7 +16,10 @@ function App() {
   // const fetchUser = fetch("https://jsonplaceholder.typicode.com/users").then(
   //   (response) => response.json()
   // );
-
+  const fetchFriends = async()=>{
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    return res.json()
+  }
   let actors = ["a", "b", "c", "d", "e"];
   let singers = [
     { id: 1, name: "sabrina", age: "24" },
@@ -32,7 +35,7 @@ function App() {
   }
   return (
     <>
-      <Friends ></Friends>
+      
       <Batsman></Batsman>
       ============
       <Counter></Counter>
@@ -40,6 +43,7 @@ function App() {
         <Singer key={singer.id} singer={singer}></Singer>
       ))} */}
       <Suspense>
+      <Friends fetchFriends={fetchFriends()}></Friends>
       {/* <Actor fetchUser={fetchUser}></Actor> */}
       </Suspense>
       
